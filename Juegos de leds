@@ -1,0 +1,105 @@
+int d_led_1=13;
+int d_led_2=12;
+int d_led_3=11;
+int d_led_4=10;
+int d_led_5=9;
+int d_led_6=8;
+int d_led_7=7;
+int d_led_8=6;
+int d_led_9=5;
+int d_led_10=4;
+
+int sw_1=1;
+int sw_2=2;
+int sw_3=3;
+
+int vector_1[]={d_led_1,d_led_2,d_led_3,d_led_4,d_led_5,d_led_6,d_led_7,d_led_8,d_led_9,d_led_10,};
+
+int aleatorio;
+
+int contador_1=0;
+int contador_2=0;
+int contador_3=1;
+int contador_4=0;
+int contador_5=0;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(d_led_1,OUTPUT);
+  pinMode(d_led_2,OUTPUT);
+  pinMode(d_led_3,OUTPUT);
+  pinMode(d_led_4,OUTPUT);
+  pinMode(d_led_5,OUTPUT);
+  pinMode(d_led_6,OUTPUT);
+  pinMode(d_led_7,OUTPUT);
+  pinMode(d_led_8,OUTPUT);
+  pinMode(d_led_9,OUTPUT);
+  pinMode(d_led_10,OUTPUT);
+
+  pinMode(sw_1,INPUT);
+  pinMode(sw_2,INPUT);
+  pinMode(sw_3,INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if(digitalRead(sw_1)==LOW&&digitalRead(sw_2)==HIGH&&digitalRead(sw_3)==LOW){
+   for(;contador_3<10;contador_3=contador_3+2){
+    digitalWrite(vector_1[contador_3],HIGH);
+    delay(200);
+    digitalWrite(vector_1[contador_3],LOW);
+    delay(200);
+    }contador_3=1;
+    }else{
+         if(digitalRead(sw_1)==LOW&&digitalRead(sw_2)==HIGH&&digitalRead(sw_3)==HIGH){
+             for(;contador_4<10;contador_4=contador_4+2){
+             digitalWrite(vector_1[contador_4],HIGH);
+             delay(200);
+             digitalWrite(vector_1[contador_4],LOW);
+             delay(200);
+             }contador_4=0;
+          }else{
+               if(digitalRead(sw_1)==HIGH&&digitalRead(sw_2)==LOW&&digitalRead(sw_3)==HIGH){
+                aleatorio=random (0,10);
+                digitalWrite(vector_1[aleatorio],HIGH);
+                delay(200);
+                digitalWrite(vector_1[aleatorio],LOW);
+                delay(200);
+                }else{
+                     if(digitalRead(sw_1)==HIGH&&digitalRead(sw_2)==HIGH&&digitalRead(sw_3)==LOW){
+                      for(;contador_5<5;contador_5++){
+                        digitalWrite(vector_1[contador_5],HIGH);
+                        digitalWrite(vector_1[9-contador_5],HIGH);
+                        delay(200);
+                        digitalWrite(vector_1[contador_5],LOW);
+                        digitalWrite(vector_1[9-contador_5],LOW);
+                        delay(200);
+                        }contador_5=0;
+                      }else{
+                           if(digitalRead(sw_1)==HIGH&&digitalRead(sw_2)==HIGH&&digitalRead(sw_3)==HIGH){
+                            for(;contador_1<5;contador_1++){
+                              for(;contador_2<10;contador_2++){
+                              digitalWrite(vector_1[contador_2],HIGH);
+                              delay(100);
+                              digitalWrite(vector_1[contador_2],LOW);
+                              delay(100);
+                            }
+                            contador_2=0;
+                            }
+                            }else{
+                                 digitalWrite(d_led_1,LOW);
+                                 digitalWrite(d_led_2,LOW);
+                                 digitalWrite(d_led_3,LOW);
+                                 digitalWrite(d_led_4,LOW);
+                                 digitalWrite(d_led_5,LOW);
+                                 digitalWrite(d_led_6,LOW);
+                                 digitalWrite(d_led_7,LOW);
+                                 digitalWrite(d_led_8,LOW);
+                                 digitalWrite(d_led_9,LOW);
+                                 digitalWrite(d_led_10,LOW);
+                              }
+                        }
+                  }
+            }
+      }
+}
